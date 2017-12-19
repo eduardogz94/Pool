@@ -1,6 +1,5 @@
 package eagz;
 
-
 public class Client extends Thread{
 	Conexion c;
 	
@@ -11,5 +10,4 @@ public class Client extends Thread{
 			System.out.println("----------------------------------");
 		} catch(Exception e){e.printStackTrace(); } 
 	}
-
 }

@@ -14,6 +14,8 @@ public class ThreadHolder extends Thread {
 		pool = new ArrayList<Client>();
 	}
 	
+	//start
+	
 	public void run(){
 		stime = System.currentTimeMillis();
 		try {
@@ -23,19 +25,20 @@ public class ThreadHolder extends Thread {
 				}
 				
 				else if(pool.size() == a){
-					Thread.sleep(800);
+					Thread.sleep(100);
+					System.out.println("----------------------------------");
+					System.out.println("Pool capacity -> " + a);
 					a = a+b;
-					System.out.println("Increased pool cap by 5, reached max cap -> " + a);
-					poolHelper();
+					System.err.println("Increased pool cap by 5, reached max cap -> " + a);
 				}	
 				
 				else if(pool.size() == y) {
 					System.out.println("----------------------------------");
-					System.out.println("Database is busy, please try again in a second.");	
+					System.err.println("Database is busy, please try again in a second.");	
 					deleteClient(c);
 					System.out.println("Pool -> "+pool.size() + ".");
 				}	
-			Thread.sleep(400);
+			Thread.sleep(300);
 			ftime = System.currentTimeMillis();
 			time = (ftime - stime)/1000 ;
 			System.out.println("Time established -> " + time + " sec");
@@ -43,6 +46,7 @@ public class ThreadHolder extends Thread {
 		}catch(Exception e) {e.printStackTrace();}
 	}
 	
+	//functions
 	public void poolHelper(){
 		obtainClient(c);
 		addClient(c);
@@ -60,6 +64,7 @@ public class ThreadHolder extends Thread {
 	
 	public void deleteClient(Client c){
 		pool.remove(c);
+		Conexion.Disconnection();
 		System.out.println("Client Disconnected");
 	}
 }

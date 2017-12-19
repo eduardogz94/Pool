@@ -22,7 +22,7 @@ import java.sql.SQLException;
 		} catch(Exception e){	e.printStackTrace(); } 
 	}
 
-	public synchronized void Disconnection(){
+	public synchronized static void Disconnection(){
 		try{
 			conexion.close();
 		}catch(Exception e){ e.printStackTrace();}	
@@ -38,10 +38,9 @@ import java.sql.SQLException;
 			"pasdhugfyigfiyasgfiahsdfghasjkddgsfghsgfhshddfsgfh" +
 			"aksndjahnduabdihasdasdaggisdhhsadsdasdasdasdasdasd";
 
-			for (int i = 0; i < 100; i++) {
-		 		ps.setString(1, string);
-            	ps.executeUpdate();  
-        	}       
+	 		ps.setString(1, string);
+           	ps.executeUpdate();  
+        	
 			ps.close();
 		} catch (SQLException e) {e.printStackTrace();}
 	}
